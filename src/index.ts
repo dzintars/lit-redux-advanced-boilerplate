@@ -1,1 +1,2 @@
-console.log('Hello')
+import './components/app-shell'
+import './scss/main.scss'

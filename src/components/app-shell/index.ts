@@ -1,6 +1,7 @@
 import { LitElement, html, css } from 'lit-element';
+import '../main-navigation';
+import '../app-shipping';
 
-export default () => {
 	class AppShell extends LitElement {
 		static get is() { return 'app-shell' }
 
@@ -28,8 +29,11 @@ export default () => {
 						box-sizing: border-box;
 						display: flex;
 						flex-direction: column;
-						background-color: var(--color-dodgerblue-main);
-						color: var(--color-dodgerblue-10l);
+						background-color: var(--color-base-light);
+						color: var(--color-dodgerblue-10d);
+					}
+					app-shipping {
+						flex: 1;
 					}
 				`,
 			];
@@ -39,7 +43,8 @@ export default () => {
 		// eslint-disable-next-line
 		render() {
 			return html`
-				<p>${this.text}</p>
+				<main-navigation></main-navigation>
+				<app-shipping></app-shipping>
 			`;
 		}
 
@@ -50,5 +55,3 @@ export default () => {
 	}
 
 	customElements.define(AppShell.is, AppShell);
-
-}
