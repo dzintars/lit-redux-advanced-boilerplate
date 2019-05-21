@@ -1,9 +1,6 @@
 import { LitElement, html, css } from 'lit-element';
 import { connect } from 'pwa-helpers';
-import store from '../../store'
-import { getLauncherVisibility } from '../../store/main-launcher/selectors'
-import { hideLauncher, launcherShown } from '../../store/main-launcher/actions'
-// import { getAugmentedOrders } from '../redux/selectors/selectedOrders';
+import store, { getLauncherVisibility, hideLauncher, launcherShown} from '../../store'
 
 	class MainLauncher extends connect(store)(LitElement) {
         static get is() { return 'main-launcher' }
