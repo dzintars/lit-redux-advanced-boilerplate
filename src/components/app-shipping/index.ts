@@ -1,4 +1,5 @@
 import { LitElement, html, css } from 'lit-element';
+import '../main-launcher'
 
 	class AppShipping extends LitElement {
         static get is() { return 'app-shipping' }
@@ -26,9 +27,11 @@ import { LitElement, html, css } from 'lit-element';
 		// eslint-disable-next-line
 		render() {
 			return html`
-				<h1>Shipping App</h1>
+                <h1>Shipping App</h1>
+                <main-launcher></main-launcher>
 			`;
-		}
+        }
+    
 
 		// Turn off shadowDOM
 		// createRenderRoot() {

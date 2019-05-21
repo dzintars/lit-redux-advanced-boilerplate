@@ -1,10 +1,10 @@
 import { createStore, applyMiddleware } from 'redux';
 import { createBrowserHistory, routerMiddleware, startListener } from 'redux-first-routing';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import createSagaMiddleware from 'redux-saga';
+// import createSagaMiddleware from 'redux-saga';
 import logMiddleware from './middleware/log';
-import rootReducer from './reducers/root';
-import rootSaga from './sagas';
+import rootReducer from './reducer';
+// import rootSaga from './sagas';
 
 // https://github.com/zalmoxisus/redux-devtools-extension/blob/master/docs/API/Arguments.md
 // https://github.com/zalmoxisus/remote-redux-devtools/issues/129
@@ -23,9 +23,9 @@ const configureStore = () => {
 	const history = createBrowserHistory();
 	const routeMiddleware = routerMiddleware(history);
 	const composeEnhancers = composeWithDevTools(options);
-	const sagaMiddleware = createSagaMiddleware();
+	// const sagaMiddleware = createSagaMiddleware();
 
-	const middlewares = [logMiddleware, routeMiddleware, sagaMiddleware];
+	const middlewares = [logMiddleware, routeMiddleware];
 
 	const store = createStore(
 		rootReducer,
@@ -41,14 +41,11 @@ const configureStore = () => {
 	);
 
 	startListener(history, store);
-	sagaMiddleware.run(rootSaga);
+	// sagaMiddleware.run(rootSaga);
 
 	return store;
 };
 
 const store = configureStore();
-
-// Export store for easy debugging
-// window.store = store;
 
 export default store;
