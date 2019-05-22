@@ -12,6 +12,15 @@ const initialState : LauncherState = {
 
 export default <Reducer>(state : LauncherState = initialState, action: LauncherActions) => {
   switch (action.type) {
+    case LAUNCHER.TOGGLE:
+      return { ...state,
+        isVisible: !state.isVisible,
+      };
+    case LAUNCHER.SHOW:
+      return { ...state,
+        isVisible: true,
+      };
+
     case LAUNCHER.SHOWN:
       return { ...state,
         isVisible: true,

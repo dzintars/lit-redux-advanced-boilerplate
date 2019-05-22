@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit-element';
 import { connect } from 'pwa-helpers';
-import store, { getLauncherVisibility, hideLauncher, launcherShown} from '../../store'
+import store, { getLauncherVisibility, hideLauncher, launcherShown, launcherHidden} from '../../store'
 
 	class MainLauncher extends connect(store)(LitElement) {
         static get is() { return 'main-launcher' }
@@ -21,7 +21,6 @@ import store, { getLauncherVisibility, hideLauncher, launcherShown} from '../../
         }
         
         stateChanged(state) {
-            // this.orders = getAugmentedOrders(state);
             this.isVisible = getLauncherVisibility(state)
         }
         
@@ -29,16 +28,18 @@ import store, { getLauncherVisibility, hideLauncher, launcherShown} from '../../
 			return [
 				css`
 					:host {
-						height: 400px;
+                        height: auto;
+                        max-height: calc(100vh - var(--size-sl));
 						width: 100%;
 						box-sizing: border-box;
 						display: flex;
                         flex-direction: column;
-                        background-color: var(--color-dodgerblue-8d);
+                        background-color: var(--color-dodgerblue-9d);
                         box-sizing: border-box;
                         align-items: center;
                         justify-content: center;
                         color: var(--color-dodgerblue-8l);
+                        overflow: auto;
                     }
 				`,
 			];
@@ -50,8 +51,11 @@ import store, { getLauncherVisibility, hideLauncher, launcherShown} from '../../
 			return html`
                 <h1>Main Launcher</h1>
                 <p>${this.isVisible}</p>
-                <button @click="${this.changeState}">Change State</button>
 			`;
+        }
+
+        changeState() {
+            store.dispatch(hideLauncher());
         }
 
         connectedCallback() {
@@ -59,8 +63,9 @@ import store, { getLauncherVisibility, hideLauncher, launcherShown} from '../../
             store.dispatch(launcherShown());
         }
         
-        changeState() {
-            store.dispatch(hideLauncher());
+        disconnectedCallback() {
+            super.disconnectedCallback()
+            store.dispatch(launcherHidden());
         }
 
 		// Turn off shadowDOM

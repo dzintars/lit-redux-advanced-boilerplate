@@ -1,5 +1,4 @@
 import { LitElement, html, css } from 'lit-element';
-import '../main-launcher'
 
 	class AppShipping extends LitElement {
         static get is() { return 'app-shipping' }
@@ -28,7 +27,6 @@ import '../main-launcher'
 		render() {
 			return html`
                 <h1>Shipping App</h1>
-                <main-launcher></main-launcher>
 			`;
         }
     

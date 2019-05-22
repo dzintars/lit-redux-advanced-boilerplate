@@ -1,24 +1,37 @@
 import { LitElement, html, css } from 'lit-element';
+import { connect } from 'pwa-helpers';
+import store, { getLauncherVisibility } from '../../store'
 import '../main-navigation';
 import '../app-shipping';
+import '../main-launcher'
 
-	class AppShell extends LitElement {
+	class AppShell extends connect(store)(LitElement) {
 		static get is() { return 'app-shell' }
 
 		private text : string
+		private launcherIsVisible : boolean
 
 		static get properties() {
 			return {
 			  text: {
 				type: String
 			  },
+			  launcherIsVisible: {
+				  type: Boolean
+			  }
 			}
 		  }
 
 		constructor() {
 			super()
 			this.text = 'App Shell Component';
+			// this.launcherIsVisible = true
 		}
+
+		stateChanged(state) {
+			this.launcherIsVisible = getLauncherVisibility(state)
+			// console.log(this.launcherIsVisible)
+        }
 
 		static get styles() {
 			return [
@@ -35,6 +48,10 @@ import '../app-shipping';
 					app-shipping {
 						flex: 1;
 					}
+					main-launcher {
+						position: fixed;
+						top: var(--size-sl);
+					}
 				`,
 			];
 		}
@@ -45,6 +62,9 @@ import '../app-shipping';
 			return html`
 				<main-navigation></main-navigation>
 				<app-shipping></app-shipping>
+				${this.launcherIsVisible
+				? html`<main-launcher></main-launcher>`
+				: ''}
 			`;
 		}
 
