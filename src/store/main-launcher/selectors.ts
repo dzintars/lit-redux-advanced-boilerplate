@@ -1,9 +1,9 @@
 import { createSelector } from 'reselect';
 import { RootState } from '../reducer';
 
-const getLauncher = (state : RootState) => state.launcher;
+const getLauncher = (state: RootState) => state.launcher;
 
 export const getLauncherVisibility = createSelector(
-  [getLauncher],
-  (launcher) => launcher.isVisible
+	[getLauncher],
+	launcher => launcher.isVisible,
 );
