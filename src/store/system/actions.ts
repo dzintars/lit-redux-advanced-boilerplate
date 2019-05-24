@@ -1,13 +1,7 @@
-export enum SYSTEM {
-	TOGGLE = 'SYSTEM_TOGGLE',
+import { FETCH_APPS, SystemActionTypes } from './types';
+
+export function fetchApps(): SystemActionTypes {
+	return {
+		type: FETCH_APPS,
+	};
 }
-
-interface ToggleSystemAction {
-	readonly type: SYSTEM.TOGGLE;
-}
-
-export type SystemActions = ToggleSystemAction;
-
-export const toggleSystem = (): ToggleSystemAction => ({
-	type: SYSTEM.TOGGLE,
-});

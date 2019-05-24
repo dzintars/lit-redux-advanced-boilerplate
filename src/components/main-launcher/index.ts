@@ -8,6 +8,7 @@ import store, {
 	launcherShown,
 	launcherHidden,
 } from '../../store';
+import '../app-shortcut';
 
 class MainLauncher extends connect(store)(LitElement) {
 	static is = 'main-launcher';
@@ -37,7 +38,6 @@ class MainLauncher extends connect(store)(LitElement) {
 	stateChanged(state) {
 		this.isVisible = getLauncherVisibility(state);
 		this.apps = getPublicApps(state);
-		console.log(typeof this.apps);
 	}
 
 	static get styles() {
@@ -52,12 +52,13 @@ class MainLauncher extends connect(store)(LitElement) {
 					flex-direction: row;
 					background-color: var(--color-dodgerblue-9d);
 					box-sizing: border-box;
-					align-items: center;
-					justify-content: center;
+					// align-items: center;
+					// justify-content: center;
 					color: var(--color-dodgerblue-8l);
 					overflow: auto;
+					flex-wrap: wrap;
 				}
-				button {
+				app-shortcut {
 					margin: 1rem;
 				}
 			`,
@@ -72,10 +73,18 @@ class MainLauncher extends connect(store)(LitElement) {
 				this.apps,
 				app => app.uuid,
 				app => html`
-					<button>${app.title}</button>
+					<app-shortcut
+						key="${app.uuid}"
+						@click="${this.openApp}"
+						title="${app.title}"
+					></app-shortcut>
 				`,
 			)}
 		`;
+	}
+
+	openApp(e) {
+		console.log('Clicked:', e.target.getAttribute('key'));
 	}
 
 	changeState() {
