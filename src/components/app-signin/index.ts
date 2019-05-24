@@ -1,5 +1,5 @@
 import { LitElement, html, css } from 'lit-element';
-import './legal-info';
+// import './legal-info';
 
 class AppSignin extends LitElement {
 	static get is() {
@@ -10,14 +10,15 @@ class AppSignin extends LitElement {
 		return [
 			css`
 				:host {
-					width: 100%;
-					height: 100%;
+					flex: 1;
+					// width: 100%;
+					// height: 100%;
 					display: grid;
 					place-items: center center;
 				}
 				.container {
 					width: 320px;
-					border: 1px solid var(--main-background);
+					border: 1px solid var(--main-background, #e7e7e7);
 					padding: var(--size-xs);
 					border-radius: 5px;
 					box-shadow: 0 11px 15px -7px rgba(0, 0, 0, 0.2), 0 24px 38px 3px rgba(0, 0, 0, 0.14),
@@ -48,7 +49,7 @@ class AppSignin extends LitElement {
 					/* width: 100%; */
 					border-radius: 3px;
 					background: var(--main-background);
-					border: 1px solid var(--main-background);
+					border: 1px solid var(--main-background, #8bbbff);
 					padding: 0 6px;
 					outline: none;
 					box-sizing: border-box;
@@ -75,6 +76,7 @@ class AppSignin extends LitElement {
 				}
 				.new-client a {
 					color: white;
+					background: var(--color-lawngreen-main);
 				}
 				.signup {
 					display: inline-block;
@@ -167,7 +169,7 @@ class AppSignin extends LitElement {
 						</div>
 					</form>
 				</div>
-				<legal-info></legal-info>
+				<!-- <legal-info></legal-info> -->
 			</div>
 		`;
 	}

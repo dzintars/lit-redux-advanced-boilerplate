@@ -1,15 +1,14 @@
 import { LitElement, html, css } from 'lit-element';
 
-class AppShipping extends LitElement {
+class AppNotFound extends LitElement {
 	static get is() {
-		return 'app-shipping';
+		return 'app-not-found';
 	}
 
 	static get styles() {
 		return [
 			css`
 				:host {
-					flex: 1;
 					height: 100%;
 					width: 100%;
 					box-sizing: border-box;
@@ -29,7 +28,7 @@ class AppShipping extends LitElement {
 	// eslint-disable-next-line
 	render() {
 		return html`
-			<h1>Shipping App</h1>
+			<h1>404 Not Found</h1>
 		`;
 	}
 
@@ -39,4 +38,4 @@ class AppShipping extends LitElement {
 	// }
 }
 
-customElements.define(AppShipping.is, AppShipping);
+customElements.define(AppNotFound.is, AppNotFound);

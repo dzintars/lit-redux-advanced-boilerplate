@@ -1,7 +1,8 @@
 import { LitElement, html, css } from 'lit-element';
 import { connect } from 'pwa-helpers';
-import store, { toggleLauncher } from '../../store';
+import store, { toggleLauncher, hideLauncher } from '../../store';
 import { Grid } from '../../assets/svg';
+import { Router } from '@vaadin/router';
 
 class MainNavigation extends connect(store)(LitElement) {
 	static get is() {
@@ -63,12 +64,17 @@ class MainNavigation extends connect(store)(LitElement) {
 				${Grid()}
 			</button>
 			<div></div>
-			<button>Sign In</button>
+			<button @click=${() => this.switchRoute('signin')}>Sign In</button>
 		`;
 	}
 
 	toggleLauncher() {
 		store.dispatch(toggleLauncher());
+	}
+
+	switchRoute(route) {
+		store.dispatch(hideLauncher());
+		Router.go(`/${route}`);
 	}
 
 	// Turn off shadowDOM

@@ -4,6 +4,7 @@ import store, { getLauncherVisibility } from '../../store';
 import '../main-navigation';
 import '../app-shipping';
 import '../main-launcher';
+import '../app-signin';
 
 class AppShell extends connect(store)(LitElement) {
 	static get is() {
@@ -12,6 +13,8 @@ class AppShell extends connect(store)(LitElement) {
 
 	private text: string;
 	private launcherIsVisible: boolean;
+	private lastUsedApp: string;
+	private defaultApp: string;
 
 	static get properties() {
 		return {
@@ -21,12 +24,20 @@ class AppShell extends connect(store)(LitElement) {
 			launcherIsVisible: {
 				type: Boolean,
 			},
+			lastUsedApp: {
+				type: String,
+			},
+			defaultApp: {
+				type: String,
+			},
 		};
 	}
 
 	constructor() {
 		super();
 		this.text = 'App Shell Component';
+		this.defaultApp = 'app-signin';
+		this.lastUsedApp = 'app-shipping';
 		// this.launcherIsVisible = true
 	}
 
@@ -47,9 +58,6 @@ class AppShell extends connect(store)(LitElement) {
 					background-color: var(--color-base-light);
 					color: var(--color-dodgerblue-10d);
 				}
-				app-shipping {
-					flex: 1;
-				}
 				main-launcher {
 					position: fixed;
 					top: var(--size-sl);
@@ -58,19 +66,26 @@ class AppShell extends connect(store)(LitElement) {
 		];
 	}
 
-	//
-	// eslint-disable-next-line
 	render() {
 		return html`
 			<main-navigation></main-navigation>
 			<!-- TODO: Application should be injected dynamically -->
-			<app-shipping></app-shipping>
+
 			${this.launcherIsVisible
 				? html`
 						<main-launcher></main-launcher>
 				  `
 				: ''}
+			<slot></slot>
 		`;
+	}
+
+	connectedCallback() {
+		super.connectedCallback();
+		if (localStorage.getItem('lastUsedApp') !== null) {
+			this.lastUsedApp = localStorage.getItem('lastUsedApp');
+		}
+		console.log(this.lastUsedApp);
 	}
 
 	// Turn off shadowDOM

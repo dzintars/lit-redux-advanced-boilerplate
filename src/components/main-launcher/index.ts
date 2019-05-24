@@ -9,6 +9,7 @@ import store, {
 	launcherHidden,
 } from '../../store';
 import '../app-shortcut';
+import { Router } from '@vaadin/router';
 
 class MainLauncher extends connect(store)(LitElement) {
 	static is = 'main-launcher';
@@ -75,12 +76,17 @@ class MainLauncher extends connect(store)(LitElement) {
 				app => html`
 					<app-shortcut
 						key="${app.uuid}"
-						@click="${this.openApp}"
+						@click=${() => this.switchRoute(`${app.path}`)}
 						title="${app.title}"
 					></app-shortcut>
 				`,
 			)}
 		`;
+	}
+
+	switchRoute(route) {
+		store.dispatch(hideLauncher());
+		Router.go(`/${route}`);
 	}
 
 	openApp(e) {

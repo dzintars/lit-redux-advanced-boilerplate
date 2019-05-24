@@ -9,6 +9,7 @@ const initialState: SystemState = {
 			type: 'system',
 			componentTag: '',
 			default: false,
+			path: '',
 		},
 		'54789c07-bb43-4db4-8b2d-1a8e1f8c67f1': {
 			uuid: '54789c07-bb43-4db4-8b2d-1a8e1f8c67f1',
@@ -16,6 +17,7 @@ const initialState: SystemState = {
 			type: 'system',
 			componentTag: '',
 			default: false,
+			path: '',
 		},
 		'c178025e-a209-4c50-8c34-36d35f36494c': {
 			uuid: 'c178025e-a209-4c50-8c34-36d35f36494c',
@@ -23,6 +25,7 @@ const initialState: SystemState = {
 			type: 'system',
 			componentTag: '',
 			default: false,
+			path: 'signin',
 		},
 		'437642dd-7d74-4213-af76-b51fc24eff0': {
 			uuid: '437642dd-7d74-4213-af76-b51fc24eff0',
@@ -30,6 +33,7 @@ const initialState: SystemState = {
 			type: 'system',
 			componentTag: '',
 			default: false,
+			path: 'signup',
 		},
 		'5a2192a0-0051-46a1-85e7-17245ba24f55': {
 			uuid: '5a2192a0-0051-46a1-85e7-17245ba24f55',
@@ -37,6 +41,7 @@ const initialState: SystemState = {
 			type: 'system',
 			componentTag: '',
 			default: false,
+			path: 'restore-password',
 		},
 		'59728db5-8284-42c5-8731-bdec7adab8d8': {
 			uuid: '59728db5-8284-42c5-8731-bdec7adab8d8',
@@ -44,6 +49,7 @@ const initialState: SystemState = {
 			type: 'user',
 			componentTag: 'app-shipping',
 			default: true,
+			path: 'shipping',
 		},
 		'3096aa1f-a6ce-4130-8147-66f4bea35e16': {
 			uuid: '3096aa1f-a6ce-4130-8147-66f4bea35e16',
@@ -51,6 +57,7 @@ const initialState: SystemState = {
 			type: 'user',
 			componentTag: 'app-shipping-project',
 			default: false,
+			path: 'shipping/project',
 		},
 		'c80626f6-2974-4091-813c-f217ce0b44d6': {
 			uuid: 'c80626f6-2974-4091-813c-f217ce0b44d6',
@@ -58,6 +65,7 @@ const initialState: SystemState = {
 			type: 'user',
 			componentTag: 'app-accounts',
 			default: false,
+			path: 'accounts',
 		},
 		'52386006-bf4a-4ddf-927c-41c395e877f5': {
 			uuid: '52386006-bf4a-4ddf-927c-41c395e877f5',
@@ -65,6 +73,7 @@ const initialState: SystemState = {
 			type: 'user',
 			componentTag: 'app-sales',
 			default: false,
+			path: 'sales',
 		},
 		'0e35396c-7a32-4b2f-8759-d1b09b9fce2c': {
 			uuid: '0e35396c-7a32-4b2f-8759-d1b09b9fce2c',
@@ -72,6 +81,7 @@ const initialState: SystemState = {
 			type: 'user',
 			componentTag: 'app-accounting',
 			default: false,
+			path: 'accounting',
 		},
 	},
 	publicApplications: [

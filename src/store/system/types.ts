@@ -4,6 +4,7 @@ export interface Application {
 	type: string;
 	componentTag: string;
 	default: boolean;
+	path: string;
 }
 
 export interface Module {
