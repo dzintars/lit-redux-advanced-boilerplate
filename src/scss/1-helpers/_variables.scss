@@ -11,6 +11,18 @@
 	--color-base-dark: hsla(0, 0%, 0%, 1); // Black
 	--color-base-light: hsla(360, 100%, 100%, 1); // White
 
+	--color-light: hsla(360, 100%, 100%, 1); // #ffffff
+	--color-dark: hsla(0, 0%, 0%, 1); // #000000
+	--color-primary: hsla(215, 100%, 50%, 1); // #006aff
+	--color-secondary: hsla(212, 14%, 19%, 1); // #292f36
+	--color-danger: hsla(3, 98%, 46%, 1); // #e70e02
+
+	--color-success-2l: hsla(101, 63%, 49%, 1); // #61CD2E
+	--color-success-1l: hsla(101, 79%, 44%, 1); // #4FC817
+	--color-success: hsla(101, 100%, 38%, 1); // #828581
+	--color-warning: hsla(44, 98%, 50%, 1); // #fcba04
+	--color-info: hsla(284, 100%, 62%, 1); // #ca3cff
+
 	--color-dodgerblue-10l: hsla(215, 100%, 95%, 1); // #E7F1FF
 	--color-dodgerblue-9l: hsla(216, 100%, 91%, 1); // #D0E3FF
 	--color-dodgerblue-8l: hsla(215, 100%, 86%, 1); // #B9D6FF
@@ -33,23 +45,24 @@
 	--color-dodgerblue-9d: hsla(214, 100%, 9%, 1); // #00142f
 	--color-dodgerblue-10d: hsla(215, 100%, 5%, 1); // #000A18
 
-	--color-lawngreen-main: #3ec300;
+	--color-lawngreen-main: #3ec402;
 
 	--font-main: Montserrat, sans-serif;
 
-	--text-sm: 0.75rem;
-	--text-md: 0.875rem;
+	// Use 'px to rem' VS Code plugin to toggle px/rem by ALT+Z
+	--text-sm: 0.75rem; // 12px
+	--text-md: 0.875rem; // 14px
 
-	--margin-s: 0.25rem;
+	--margin-s: 0.25rem; // 4px
 
-	--size-ss: 1.125rem;
-	--size-xs: 1.625rem;
-	--size-s: 1.875rem;
+	--size-ss: 1.125rem; // 18px
+	--size-xs: 1.625rem; // 26px
+	--size-s: 1.875rem; // 30px
 	--size-xm: 2rem; // 32px
-	--size-m: 2.25rem;
-	--size-ml: 2.5rem;
-	--size-l: 2.75rem;
+	--size-m: 2.25rem; // 36px
+	--size-ml: 2.5rem; // 40px
+	--size-l: 2.75rem; // 44px
 	--size-sl: 3rem; // 48px;
-	--size-xl: 3.5rem;
-	--size-xxl: 4.5rem;
+	--size-xl: 3.5rem; // 56px
+	--size-xxl: 4.5rem; // 72px
 }

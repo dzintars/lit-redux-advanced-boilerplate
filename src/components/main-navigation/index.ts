@@ -51,6 +51,11 @@ class MainNavigation extends connect(store)(LitElement) {
 					color: white;
 					outline: none;
 				}
+				h1 {
+					margin: 0 1rem;
+					color: var(--color-dodgerblue-10l);
+					cursor: pointer;
+				}
 				div {
 					flex: 1;
 				}
@@ -63,6 +68,7 @@ class MainNavigation extends connect(store)(LitElement) {
 			<button @click="${this.toggleLauncher}" id="launcher" class="launcher" title="Open Launcher">
 				${Grid()}
 			</button>
+			<h1 @click=${() => this.switchRoute('')}>Oswee</h1>
 			<div></div>
 			<button @click=${() => this.switchRoute('signin')}>Sign In</button>
 		`;

@@ -1,12 +1,14 @@
 import './scss/main.scss';
 import './components/app-shell';
-import './components/app-shipping';
+import './components/app-home';
+import './components/app-signup';
+import './components/app-restore-password';
 import './components/app-not-found';
 
 import { LitElement, html, css } from 'lit-element';
 import { Router } from '@vaadin/router';
 
-class OpenWcDemo extends LitElement {
+class Bootstrap extends LitElement {
 	static get styles() {
 		return [
 			css`
@@ -46,12 +48,13 @@ class OpenWcDemo extends LitElement {
 		router.setRoutes([
 			{
 				path: '/',
-				// animate: true,
+				animate: true,
 				component: 'app-shell',
 				children: [
-					{ path: '/', animate: true, component: 'app-shipping' },
-					{ path: '/shipping', component: 'app-shipping' },
-					{ path: '/signin', animate: true, component: 'app-signin' },
+					{ path: '/', component: 'app-home' },
+					{ path: '/signin', component: 'app-signin' },
+					{ path: '/signup', component: 'app-signup' },
+					{ path: '/restore-password', component: 'app-restore-password' },
 					{ path: '(.*)', component: 'app-not-found' },
 				],
 			},
@@ -65,4 +68,4 @@ class OpenWcDemo extends LitElement {
 	}
 }
 
-customElements.define('open-wc-demo', OpenWcDemo);
+customElements.define('system-bootstrap', Bootstrap);

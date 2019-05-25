@@ -1,8 +1,8 @@
 import { LitElement, html, css } from 'lit-element';
 
-class AppShipping extends LitElement {
+class AppHome extends LitElement {
 	static get is() {
-		return 'app-shipping';
+		return 'app-home';
 	}
 
 	static get styles() {
@@ -29,7 +29,7 @@ class AppShipping extends LitElement {
 	// eslint-disable-next-line
 	render() {
 		return html`
-			<h1>Shipping App</h1>
+			<h1>Welcome to Oswee</h1>
 		`;
 	}
 
@@ -39,4 +39,4 @@ class AppShipping extends LitElement {
 	// }
 }
 
-customElements.define(AppShipping.is, AppShipping);
+customElements.define(AppHome.is, AppHome);

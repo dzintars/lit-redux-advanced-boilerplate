@@ -2,7 +2,6 @@ import { LitElement, html, css } from 'lit-element';
 import { connect } from 'pwa-helpers';
 import store, { getLauncherVisibility } from '../../store';
 import '../main-navigation';
-import '../app-shipping';
 import '../main-launcher';
 import '../app-signin';
 
@@ -37,7 +36,7 @@ class AppShell extends connect(store)(LitElement) {
 		super();
 		this.text = 'App Shell Component';
 		this.defaultApp = 'app-signin';
-		this.lastUsedApp = 'app-shipping';
+		this.lastUsedApp = 'app-home';
 		// this.launcherIsVisible = true
 	}
 
@@ -69,7 +68,6 @@ class AppShell extends connect(store)(LitElement) {
 	render() {
 		return html`
 			<main-navigation></main-navigation>
-			<!-- TODO: Application should be injected dynamically -->
 
 			${this.launcherIsVisible
 				? html`
@@ -85,7 +83,7 @@ class AppShell extends connect(store)(LitElement) {
 		if (localStorage.getItem('lastUsedApp') !== null) {
 			this.lastUsedApp = localStorage.getItem('lastUsedApp');
 		}
-		console.log(this.lastUsedApp);
+		// console.log(this.lastUsedApp);
 	}
 
 	// Turn off shadowDOM
