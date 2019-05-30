@@ -1,6 +1,8 @@
 import { LitElement, html, css } from 'lit-element';
+import { connect } from 'pwa-helpers';
+import store, { loadWaybills } from '../../store';
 
-class AppSignup extends LitElement {
+class AppSignup extends connect(store)(LitElement) {
 	static get is() {
 		return 'app-signup';
 	}
@@ -74,7 +76,7 @@ class AppSignup extends LitElement {
 					margin-top: 0;
 				}
 				a {
-					color: var(--lt-color-primary);
+					color: var(--color-dodgerblue-main);
 				}
 				@media only screen and (max-width: 600px) {
 					.container {
@@ -105,7 +107,12 @@ class AppSignup extends LitElement {
 						<input id="password" autocomplete="off" name="password" type="password" />
 					</div>
 					<div class="fieldset">
-						<input id="continue" type="submit" value="Create your Hooli account" />
+						<input
+							id="continue"
+							type="submit"
+							value="Create your Hooli account"
+							@click=${this.fetchOrders}
+						/>
 						<p>By creating an account, you agree to Hooli's</p>
 						<p>
 							<a href="/help/conditions_of_use">Conditions of Use</a> and
@@ -118,6 +125,12 @@ class AppSignup extends LitElement {
 				</form>
 			</div>
 		`;
+	}
+
+	fetchOrders(e) {
+		e.preventDefault();
+		console.log('Hello');
+		store.dispatch(loadWaybills());
 	}
 }
 

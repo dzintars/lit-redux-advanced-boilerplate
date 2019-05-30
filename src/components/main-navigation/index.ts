@@ -1,67 +1,14 @@
-import { LitElement, html, css } from 'lit-element';
+import { LitElement, html, customElement } from 'lit-element';
 import { connect } from 'pwa-helpers';
 import store, { toggleLauncher, hideLauncher } from '../../store';
 import { Grid } from '../../assets/svg';
 import { Router } from '@vaadin/router';
+import GlobalStyle from '../../assets/global-style';
+import Style from './style';
 
-class MainNavigation extends connect(store)(LitElement) {
-	static get is() {
-		return 'main-navigation';
-	}
-
-	static get styles() {
-		return [
-			css`
-				:host {
-					min-height: var(--size-sl);
-					width: 100%;
-					box-sizing: border-box;
-					display: flex;
-					flex-direction: row;
-					background-color: var(--color-dodgerblue-10d);
-					border-bottom: 1px solid var(--color-dodgerblue-6d);
-					box-sizing: border-box;
-					align-items: center;
-				}
-				button {
-					height: var(--size-s);
-					font-family: var(--font-main);
-					font-size: 1rem;
-					background-color: var(--color-dodgerblue-main);
-					color: var(--color-dodgerblue-10l);
-					border: none;
-					border-radius: 2px;
-					margin: 0 0.5rem;
-					padding: 0 1rem;
-					display: flex;
-					flex-direction: row;
-					align-items: center;
-				}
-				svg {
-					width: 1.5rem;
-					height: 1.5rem;
-					fill: var(--color-dodgerblue-10l);
-				}
-				.launcher {
-					height: var(--size-m);
-					width: var(--size-m);
-					padding: 0;
-					justify-content: center;
-					border-radius: 50%;
-					color: white;
-					outline: none;
-				}
-				h1 {
-					margin: 0 1rem;
-					color: var(--color-dodgerblue-10l);
-					cursor: pointer;
-				}
-				div {
-					flex: 1;
-				}
-			`,
-		];
-	}
+@customElement('main-navigation')
+export class MainNavigation extends connect(store)(LitElement) {
+	public static styles = [GlobalStyle, Style];
 
 	render() {
 		return html`
@@ -88,5 +35,3 @@ class MainNavigation extends connect(store)(LitElement) {
 	// 	return this;
 	// }
 }
-
-customElements.define(MainNavigation.is, MainNavigation);

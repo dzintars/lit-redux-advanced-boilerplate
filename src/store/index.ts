@@ -1,7 +1,9 @@
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import createSagaMiddleware from 'redux-saga';
 import logMiddleware from './middleware/log';
 import rootReducer from './reducer';
+import root from './rootSaga';
 
 // https://github.com/zalmoxisus/redux-devtools-extension/blob/master/docs/API/Arguments.md
 // https://github.com/zalmoxisus/remote-redux-devtools/issues/129
@@ -17,8 +19,9 @@ const configureStore = () => {
 	};
 
 	const composeEnhancers = composeWithDevTools(options);
+	const sagaMiddleware = createSagaMiddleware();
 
-	const middlewares = [logMiddleware];
+	const middlewares = [logMiddleware, sagaMiddleware];
 
 	const store = createStore(
 		rootReducer,
@@ -27,6 +30,8 @@ const configureStore = () => {
 			/* other store enhancers if any */
 		),
 	);
+
+	sagaMiddleware.run(root);
 
 	return store;
 };
@@ -38,3 +43,4 @@ export default store;
 export { RootState } from './reducer';
 export * from './main-launcher';
 export * from './system';
+export * from './waybills';

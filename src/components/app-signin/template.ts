@@ -1,4 +1,5 @@
 import { html } from 'lit-element';
+import '../legal-info';
 
 export default function() {
 	return html`
@@ -32,8 +33,8 @@ export default function() {
 						</label>
 					</div>
 					<div class="new-client">
-						<p>New to Hooli?</p>
-						<a class="signup" href="/signup">Create your Hooli account</a>
+						<p>New to Oswee?</p>
+						<a class="signup" href="/signup">Create your Oswee account</a>
 					</div>
 				</form>
 			</div>

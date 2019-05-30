@@ -1,5 +1,5 @@
-import { Reducer } from 'redux';
-import { FETCH_APPS, SystemActionTypes, SystemState } from './types';
+// import { Reducer } from 'redux';
+import { SystemActionTypes, SystemState } from './types';
 
 const initialState: SystemState = {
 	applications: {

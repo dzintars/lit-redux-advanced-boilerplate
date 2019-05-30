@@ -20,6 +20,9 @@ class AppNotFound extends LitElement {
 					justify-content: center;
 					color: var(--color-dodgerblue-8l);
 				}
+				a {
+					color: var(--color-dodgerblue-10l);
+				}
 			`,
 		];
 	}
@@ -28,7 +31,8 @@ class AppNotFound extends LitElement {
 	// eslint-disable-next-line
 	render() {
 		return html`
-			<h1>404 Not Found</h1>
+			<h1>404 : Not Found</h1>
+			<a href="/">Go to the main page</a>
 		`;
 	}
 

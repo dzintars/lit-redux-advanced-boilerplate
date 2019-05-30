@@ -61,7 +61,7 @@ class LegalInfo extends LitElement {
 				<a href="/help/privacy-notice">Privacy Notice</a>
 				<a href="/help">Help</a>
 			</div>
-			<span>© 2019, Hooli.com, Inc. or its affiliates</span>
+			<span>© 2019, Oswee.com, Inc. or its affiliates</span>
 			<slot></slot>
 		`;
 	}

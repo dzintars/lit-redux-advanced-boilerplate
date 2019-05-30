@@ -2,7 +2,6 @@ import { LitElement, customElement } from 'lit-element';
 import GlobalStyle from '../../assets/global-style';
 import Style from './style';
 import Template from './template';
-import '../legal-info';
 
 @customElement('app-signin')
 export class AppSignin extends LitElement {
