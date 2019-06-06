@@ -1,90 +1,21 @@
-import { LitElement, html, css } from 'lit-element';
+import { LitElement, html, property } from 'lit-element';
 import { connect } from 'pwa-helpers';
-import store, { loadWaybills } from '../../store';
+import store, { loadWaybills, getWaybills, submitSignup } from '../../store';
+import GlobalStyle from '../../assets/global-style';
+import Style from './style';
 
 class AppSignup extends connect(store)(LitElement) {
 	static get is() {
 		return 'app-signup';
 	}
 
-	static get styles() {
-		return [
-			css`
-				:host {
-					flex: 1;
-					width: 100%;
-					display: grid;
-					place-items: center center;
-				}
-				.container {
-					width: 320px;
-					border: 1px solid var(--main-background);
-					padding: var(--size-xs);
-					border-radius: 5px;
-					box-shadow: 0 11px 15px -7px rgba(0, 0, 0, 0.2), 0 24px 38px 3px rgba(0, 0, 0, 0.14),
-						0 9px 46px 8px rgba(0, 0, 0, 0.12);
-					background: var(--lt-color-light);
-				}
-				.fieldset {
-					display: flex;
-					flex-direction: column;
-					margin-bottom: 1.1rem;
-				}
-				label {
-					font-size: var(--text-md);
-					font-weight: 500;
-				}
-				input {
-					height: 2rem;
-					width: 100%;
-					border-radius: 3px;
-					background: var(--color-dodgerblue-10l);
-					border: 1px solid var(--color-dodgerblue-6l);
-					padding: 0 6px;
-					outline: none;
-					box-sizing: border-box;
-				}
-				input:focus {
-					border: 1px solid var(--lt-color-primary, hsl(215 100% 50%));
-				}
-				#continue {
-					color: white;
-					background-color: var(--lt-color-primary, hsl(215 100% 50%));
-					font-family: var(--font-main);
-					font-size: var(--text-md);
-					margin-bottom: 1.1rem;
-					cursor: pointer;
-				}
-				p {
-					margin: 0;
-					font-size: var(--text-sm);
-				}
-				.have-account {
-					font-size: var(--text-md);
-					font-weight: 500;
-				}
-				.have-account a {
-					text-decoration: none;
-				}
-				h1,
-				p,
-				input,
-				label {
-					color: var(--lt-color-light-10d);
-				}
-				h1 {
-					margin-top: 0;
-				}
-				a {
-					color: var(--color-dodgerblue-main);
-				}
-				@media only screen and (max-width: 600px) {
-					.container {
-						width: 280px;
-					}
-				}
-			`,
-		];
+	@property({ type: Object }) public waybills: object = {};
+
+	public static styles = [GlobalStyle, Style];
+
+	stateChanged(state) {
+		this.waybills = getWaybills(state);
+		// console.log(this.waybills);
 	}
 
 	// eslint-disable-next-line
@@ -127,10 +58,16 @@ class AppSignup extends connect(store)(LitElement) {
 		`;
 	}
 
+	payload = {
+		display_name: 'Dzintars Saga',
+		email: 'dzintars@saga.com',
+		password: 'sagapass',
+	};
+
 	fetchOrders(e) {
 		e.preventDefault();
-		console.log('Hello');
-		store.dispatch(loadWaybills());
+		store.dispatch(submitSignup(this.payload));
+		// store.dispatch(loadWaybills());
 	}
 }
 

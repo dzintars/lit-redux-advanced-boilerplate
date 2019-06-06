@@ -16,8 +16,10 @@ function* handleWaybillsLoad() {
 }
 
 // watcher saga
-export default function* watchOrdersLoad() {
+function* watchOrdersLoad() {
 	yield takeEvery(WAYBILLS.LOAD, handleWaybillsLoad);
 }
 
 // TODO: Fix Saga composition and exports
+
+export { watchOrdersLoad };

@@ -10,8 +10,6 @@ class AppHome extends LitElement {
 			css`
 				:host {
 					flex: 1;
-					height: 100%;
-					width: 100%;
 					box-sizing: border-box;
 					display: flex;
 					flex-direction: column;
@@ -30,6 +28,8 @@ class AppHome extends LitElement {
 	render() {
 		return html`
 			<h1>Welcome to Oswee</h1>
+			<h2>You have nothing to do there!</h2>
+			<p>This page is under continous development. Your actions are tracked.</p>
 		`;
 	}
 

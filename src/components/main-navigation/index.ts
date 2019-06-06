@@ -17,7 +17,7 @@ export class MainNavigation extends connect(store)(LitElement) {
 			</button>
 			<h1 @click=${() => this.switchRoute('')}>Oswee</h1>
 			<div></div>
-			<button @click=${() => this.switchRoute('signin')}>Sign In</button>
+			<button id="btnSignin" @click=${() => this.switchRoute('signin')}>Sign In</button>
 		`;
 	}
 
@@ -26,6 +26,7 @@ export class MainNavigation extends connect(store)(LitElement) {
 	}
 
 	switchRoute(route) {
+		// console.log(Router.urlForName('/signin'));
 		store.dispatch(hideLauncher());
 		Router.go(`/${route}`);
 	}

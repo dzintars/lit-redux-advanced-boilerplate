@@ -10,6 +10,7 @@ export default css`
 		place-items: center center;
 		transition: all 5s linear;
 		background-color: var(--color-dodgerblue-10l);
+		overflow: auto;
 	}
 	.container {
 		width: 370px;

@@ -53,4 +53,8 @@ export default css`
 	div {
 		flex: 1;
 	}
+	#btnSignin {
+		font-weight: 500;
+		color: white;
+	}
 `;

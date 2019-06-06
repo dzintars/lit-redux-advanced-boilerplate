@@ -3,7 +3,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
 import logMiddleware from './middleware/log';
 import rootReducer from './reducer';
-import root from './rootSaga';
+import root from './saga';
 
 // https://github.com/zalmoxisus/redux-devtools-extension/blob/master/docs/API/Arguments.md
 // https://github.com/zalmoxisus/remote-redux-devtools/issues/129
@@ -44,3 +44,4 @@ export { RootState } from './reducer';
 export * from './main-launcher';
 export * from './system';
 export * from './waybills';
+export * from './signup';
