@@ -4,9 +4,17 @@ import './components/app-home';
 import './components/app-signup';
 import './components/app-restore-password';
 import './components/app-not-found';
+import './components/app-shipping';
 
 import { LitElement, html, css } from 'lit-element';
 import { Router } from '@vaadin/router';
+
+// if ('serviceWorker' in navigator) {
+// 	// Use the window load event to keep the page load performant
+// 	window.addEventListener('load', () => {
+// 	  navigator.serviceWorker.register('/service-worker.js');
+// 	});
+//   }
 
 // TODO: Need to implement CSS Autoprefixer
 class Bootstrap extends LitElement {
@@ -68,10 +76,11 @@ class Bootstrap extends LitElement {
 					{
 						path: '/signin',
 						component: 'app-signin',
-						animate: true,
+						animate: false,
 					},
 					{ path: '/signup', component: 'app-signup' },
 					{ path: '/restore-password', component: 'app-restore-password' },
+					{ path: '/shipping', component: 'app-shipping' },
 					{ path: '(.*)', component: 'app-not-found' },
 				],
 			},

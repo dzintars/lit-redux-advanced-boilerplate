@@ -6,6 +6,14 @@ import { Router } from '@vaadin/router';
 import GlobalStyle from '../../assets/global-style';
 import Style from './style';
 
+// let defferedPrompt;
+
+// window.addEventListener('beforeinstallprompt', (e) => {
+// 	e.preventDefault();
+// 	console.log('beforeinstallprompt was called');
+// 	defferedPrompt = e;
+// });
+
 @customElement('main-navigation')
 export class MainNavigation extends connect(store)(LitElement) {
 	public static styles = [GlobalStyle, Style];
@@ -18,8 +26,19 @@ export class MainNavigation extends connect(store)(LitElement) {
 			<h1 @click=${() => this.switchRoute('')}>Oswee</h1>
 			<div></div>
 			<button id="btnSignin" @click=${() => this.switchRoute('signin')}>Sign In</button>
-		`;
-	}
+			`;
+		}
+		
+		// <button @click=${() => this.promptInstall(event)} class="install">Install</button>
+	// promptInstall(e) {
+	// 	defferedPrompt.prompt();
+	// 	defferedPrompt.userChoice.then((choiceResult) => {
+	// 		if (choiceResult.outcome === 'accepted') {
+	// 			console.log('User accepted Installation')
+	// 		}
+	// 		defferedPrompt = null;
+	// 	});
+	// }
 
 	toggleLauncher() {
 		store.dispatch(toggleLauncher());

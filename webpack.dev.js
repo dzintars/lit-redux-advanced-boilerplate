@@ -2,6 +2,8 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const merge = require('webpack-merge');
 const common = require('./webpack.common');
+const WorkboxPlugin = require('workbox-webpack-plugin');
+var WebpackPwaManifest = require('webpack-pwa-manifest')
 
 module.exports = merge(common, {
 	mode: 'development',
@@ -15,6 +17,45 @@ module.exports = merge(common, {
 			// template: path.resolve(__dirname, 'src', 'template.html'),
 			filename: './index.html',
 		}),
+		new WorkboxPlugin.GenerateSW({
+			// Exclude images from the precache
+			exclude: [/\.(?:png|jpg|jpeg|svg)$/],
+
+			// Define runtime caching rules.
+			runtimeCaching: [{
+			// Match any request ends with .png, .jpg, .jpeg or .svg.
+			urlPattern: /\.(?:png|jpg|jpeg|svg)$/,
+	
+			// Apply a cache-first strategy.
+			handler: 'CacheFirst',
+	
+			options: {
+				// Use a custom cache name.
+				cacheName: 'images',
+	
+				// Only cache 10 images.
+				expiration: {
+				maxEntries: 10,
+				},
+			},
+			}],
+		}),
+		new WebpackPwaManifest({
+			name: 'My Progressive Web App',
+			short_name: 'MyPWA',
+			description: 'My awesome Progressive Web App!',
+			start_url: "/",
+			display: 'standalone',
+			theme_color: '#ff0000',
+			background_color: '#ffffff',
+			crossorigin: '', //can be null, use-credentials or anonymous
+			icons: [
+			  {
+				src: path.resolve('src/assets/img/app-icon.png'),
+				sizes: [96, 128, 192, 256, 384, 512] // multiple sizes
+			  }
+			]
+		})
 	],
 	devtool: 'source-map',
 	devServer: {

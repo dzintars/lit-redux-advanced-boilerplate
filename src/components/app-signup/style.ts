@@ -6,18 +6,20 @@ export default css`
 	}
 	:host {
 		flex: 1;
-		width: 100%;
 		display: grid;
 		place-items: center center;
+		transition: all 5s linear;
+		background-color: var(--color-dodgerblue-10l);
+		overflow: auto;
 	}
 	.container {
 		width: 370px;
-		border: 1px solid var(--main-background);
 		padding: var(--size-xs);
 		border-radius: 5px;
 		box-shadow: 0 11px 15px -7px rgba(0, 0, 0, 0.2), 0 24px 38px 3px rgba(0, 0, 0, 0.14),
 			0 9px 46px 8px rgba(0, 0, 0, 0.12);
-		background: var(--lt-color-light);
+		margin-bottom: var(--size-xl);
+		background-color: var(--color-base-light);
 	}
 	.fieldset {
 		display: flex;
