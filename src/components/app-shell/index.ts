@@ -6,6 +6,7 @@ import '../main-launcher';
 import '../app-signin';
 
 class AppShell extends connect(store)(LitElement) {
+	private socket = new WebSocket("ws://localhost:7070/v1/ws/public");
 	static get is() {
 		return 'app-shell';
 	}
@@ -83,7 +84,30 @@ class AppShell extends connect(store)(LitElement) {
 		if (localStorage.getItem('lastUsedApp') !== null) {
 			this.lastUsedApp = localStorage.getItem('lastUsedApp');
 		}
-		// console.log(this.lastUsedApp);
+		console.log(this.lastUsedApp);
+		console.log("Connecting...");
+		this.socket.onopen = () => {
+			console.log("Connected global WS!");
+			const msg = {
+				type: "message",
+				body: "Dzintars"
+			  };
+			this.socket.send(JSON.stringify(msg));
+		}
+		this.socket.onclose = (event) => {
+			console.log("Socket Closed", event);
+		}
+		this.socket.onerror = (error) => {
+			console.log("Socket Error: ", error);
+		}
+		this.socket.onmessage = (msg) => {
+			console.log(msg);
+		}
+	}
+
+	disconnectedCallback() {
+		super.disconnectedCallback();
+		this.socket.close();
 	}
 
 	// Turn off shadowDOM

@@ -1,13 +1,13 @@
 import { html } from 'lit-element';
 import '../legal-info';
 
-export default function() {
+export default function(signIn) {
 	return html`
 		<div>
 			<div class="container">
-				<form id="signup_form" name="signup" method="POST" novalidate action="">
+				<form id="signup_form" name="signup" novalidate action="">
 					<h1>Sign in</h1>
-					<input type="hidden" name="appActionToken" value="JpvLfj2FzMZj2FoVvEDKWR29i80dN5cj3D" />
+					<!-- <input type="hidden" name="appActionToken" value="JpvLfj2FzMZj2FoVvEDKWR29i80dN5cj3D" /> -->
 					<div class="fieldset">
 						<label for="email">Email</label>
 						<input id="email" class="input txt" name="email" type="text" />
@@ -26,9 +26,9 @@ export default function() {
 						/>
 					</div>
 					<div class="fieldset">
-						<input id="signin" class="input btn" type="submit" value="Sign in" />
+						<input @click=${() => signIn()} id="signin" class="input btn" value="Sign in" />
 						<label class="keepin">
-							<input class="input chk" type="checkbox" value="" />
+							<input class="input chk" type="checkbox" value="" />			
 							<span>Keep me signed in.</span>
 						</label>
 					</div>
