@@ -2,9 +2,9 @@
 import { SIGNIN, SigninActionTypes, SigninState } from './types';
 
 const initialState: SigninState = {
-	data: {
+	user: {
 		email: '',
-		password: '',
+		isSignedin: false,
 	},
 	isLoading: false,
 };
@@ -20,7 +20,7 @@ export default <Reducer>(state: SigninState = initialState, action: SigninAction
 		case SIGNIN.SUBMIT_SUCCESS:
 			return {
 				...state,
-				data: action.payload,
+				user: action.payload,
 				isLoading: false,
 			};
 		case SIGNIN.SUBMIT_FAIL:

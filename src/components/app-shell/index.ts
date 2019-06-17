@@ -84,10 +84,9 @@ class AppShell extends connect(store)(LitElement) {
 		if (localStorage.getItem('lastUsedApp') !== null) {
 			this.lastUsedApp = localStorage.getItem('lastUsedApp');
 		}
-		console.log(this.lastUsedApp);
+		console.log("Last Used App:", this.lastUsedApp);
 		console.log("Connecting...");
 		this.socket.onopen = () => {
-			console.log("Connected global WS!");
 			const msg = {
 				type: "message",
 				body: "Dzintars"

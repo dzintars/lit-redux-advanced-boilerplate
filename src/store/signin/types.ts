@@ -10,12 +10,12 @@ export interface SigninCmd {
 }
 
 export interface SigninRes {
+	isSignedin: boolean;
 	email: string;
-	password: string;
 }
 
 export interface SigninState {
-	data: SigninRes;
+	user: SigninRes;
 	isLoading: boolean;
 }
 

@@ -1,13 +1,13 @@
 import { html } from 'lit-element';
+import { AppSignin } from './index';
 import '../legal-info';
 
-export default function(signIn) {
+export default function template(this: AppSignin) {
 	return html`
 		<div>
 			<div class="container">
-				<form id="signup_form" name="signup" novalidate action="">
+				<form id="signin-form" name="signup" novalidate action="">
 					<h1>Sign in</h1>
-					<!-- <input type="hidden" name="appActionToken" value="JpvLfj2FzMZj2FoVvEDKWR29i80dN5cj3D" /> -->
 					<div class="fieldset">
 						<label for="email">Email</label>
 						<input id="email" class="input txt" name="email" type="text" />
@@ -26,7 +26,7 @@ export default function(signIn) {
 						/>
 					</div>
 					<div class="fieldset">
-						<input @click=${() => signIn()} id="signin" class="input btn" value="Sign in" />
+						<input @click=${() => this.signIn()} id="signin" class="input btn" value="Sign in" />
 						<label class="keepin">
 							<input class="input chk" type="checkbox" value="" />			
 							<span>Keep me signed in.</span>

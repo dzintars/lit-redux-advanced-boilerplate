@@ -7,9 +7,12 @@ const fetchSignin = async (action) => {
 	// console.log("Api", action)
 	const response = await fetch(URL, {
 		method: 'POST',
+		mode: 'cors',
+		cache: 'no-cache',
+		credentials: 'include',
 		headers: {
 			Accept: 'application/json',
-			'Content-type': 'text/plain',
+			'Content-type': 'application/json, text/plain; charset=utf-8',
 		},
 		body: JSON.stringify({
 			email: action.payload.email,
