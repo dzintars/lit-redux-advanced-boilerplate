@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import createWebSocketMiddleware from './middleware/websocket';
 import createSagaMiddleware from 'redux-saga';
 import logMiddleware from './middleware/log';
 import rootReducer from './reducer';
@@ -20,8 +21,9 @@ const configureStore = () => {
 
 	const composeEnhancers = composeWithDevTools(options);
 	const sagaMiddleware = createSagaMiddleware();
+	const websocketMiddleware = createWebSocketMiddleware();
 
-	const middlewares = [logMiddleware, sagaMiddleware];
+	const middlewares = [logMiddleware, websocketMiddleware, sagaMiddleware];
 
 	const store = createStore(
 		rootReducer,
@@ -41,8 +43,9 @@ const store = configureStore();
 export default store;
 
 export { RootState } from './reducer';
-export * from './main-launcher';
-export * from './system';
-export * from './waybills';
-export * from './signup';
-export * from './signin';
+export * from './modules/websocket';
+export * from './modules/main-launcher';
+export * from './modules/system';
+export * from './modules/waybills';
+export * from './modules/signup';
+export * from './modules/signin';

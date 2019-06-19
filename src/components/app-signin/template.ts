@@ -20,13 +20,12 @@ export default function template(this: AppSignin) {
 						<input
 							id="password"
 							class="input txt"
-							autocomplete="off"
 							name="password"
 							type="password"
 						/>
 					</div>
 					<div class="fieldset">
-						<input @click=${() => this.signIn()} id="signin" class="input btn" value="Sign in" />
+						<input @click=${(event) => this.signIn(event)} id="signin" class="input btn" type="submit" value="Sign in" />
 						<label class="keepin">
 							<input class="input chk" type="checkbox" value="" />			
 							<span>Keep me signed in.</span>

@@ -68,3 +68,9 @@ class LegalInfo extends LitElement {
 }
 
 customElements.define(LegalInfo.is, LegalInfo);
+
+declare global {
+	interface HTMLElementTagNameMap {
+	  'legal-info': LegalInfo;
+	}
+}

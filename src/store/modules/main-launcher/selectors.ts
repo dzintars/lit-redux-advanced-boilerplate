@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { RootState } from '../reducer';
+import { RootState } from '../../reducer';
 
 const getLauncher = (state: RootState) => state.launcher;
 

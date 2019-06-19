@@ -5,6 +5,7 @@ import './components/app-signup';
 import './components/app-restore-password';
 import './components/app-not-found';
 import './components/app-shipping';
+import './containers/socket-example-page';
 
 import { LitElement, html, css } from 'lit-element';
 import { Router } from '@vaadin/router';
@@ -81,6 +82,7 @@ class Bootstrap extends LitElement {
 					{ path: '/signup', component: 'app-signup' },
 					{ path: '/restore-password', component: 'app-restore-password' },
 					{ path: '/shipping', component: 'app-shipping' },
+					{ path: '/ws', component: 'socket-example-page' },
 					{ path: '(.*)', component: 'app-not-found' },
 				],
 			},

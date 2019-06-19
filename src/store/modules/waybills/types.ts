@@ -5,13 +5,6 @@ export enum WAYBILLS {
 	SELECT = 'WAYBILLS_SELECT',
 }
 
-// export const ORDERS = {
-// 	FETCH: 'ORDERS_FETCH',
-// 	FETCH_SUCCESS: 'ORDERS_FETCH_SUCCESS',
-// 	FETCH_FAIL: 'ORDERS_FETCH_FAIL',
-// 	SELECT: 'ORDERS_SELECT',
-// };
-
 export interface Waybill {
 	uuid: string;
 	reference: string;

@@ -1,12 +1,11 @@
 import { LitElement, html, css } from 'lit-element';
 import { connect } from 'pwa-helpers';
-import store, { getLauncherVisibility } from '../../store';
+import store, { getLauncherVisibility, initializeWeSocketsChannel } from '../../store';
 import '../main-navigation';
 import '../main-launcher';
 import '../app-signin';
 
 class AppShell extends connect(store)(LitElement) {
-	private socket = new WebSocket("ws://localhost:7070/v1/ws/public");
 	static get is() {
 		return 'app-shell';
 	}
@@ -85,28 +84,11 @@ class AppShell extends connect(store)(LitElement) {
 			this.lastUsedApp = localStorage.getItem('lastUsedApp');
 		}
 		console.log("Last Used App:", this.lastUsedApp);
-		console.log("Connecting...");
-		this.socket.onopen = () => {
-			const msg = {
-				type: "message",
-				body: "Dzintars"
-			  };
-			this.socket.send(JSON.stringify(msg));
-		}
-		this.socket.onclose = (event) => {
-			console.log("Socket Closed", event);
-		}
-		this.socket.onerror = (error) => {
-			console.log("Socket Error: ", error);
-		}
-		this.socket.onmessage = (msg) => {
-			console.log(msg);
-		}
+		// store.dispatch(initializeWeSocketsChannel());
 	}
 
 	disconnectedCallback() {
 		super.disconnectedCallback();
-		this.socket.close();
 	}
 
 	// Turn off shadowDOM

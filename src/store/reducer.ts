@@ -1,15 +1,18 @@
 import { combineReducers } from 'redux';
-import launcher, { LauncherState } from './main-launcher/reducer';
-import system from './system/reducer';
-import { SystemState } from './system/types';
-import waybills from './waybills/reducer';
-import { WaybillsState } from './waybills/types';
-import signup from './signup/reducer';
-import { SignupState } from './signup/types';
-import signin from './signin/reducer';
-import { SigninState } from './signin/types';
+import launcher, { LauncherState } from './modules/main-launcher/reducer';
+import socket from './modules/websocket/reducer';
+import { SocketState } from './modules/websocket/types';
+import system from './modules/system/reducer';
+import { SystemState } from './modules/system/types';
+import waybills from './modules/waybills/reducer';
+import { WaybillsState } from './modules/waybills/types';
+import signup from './modules/signup/reducer';
+import { SignupState } from './modules/signup/types';
+import signin from './modules/signin/reducer';
+import { SigninState } from './modules/signin/types';
 
 export interface RootState {
+	readonly socket: SocketState;
 	readonly launcher: LauncherState;
 	readonly system: SystemState;
 	readonly waybills: WaybillsState;
@@ -18,6 +21,7 @@ export interface RootState {
 }
 
 export default combineReducers<RootState>({
+	socket,
 	launcher,
 	system,
 	waybills,

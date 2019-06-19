@@ -52,7 +52,8 @@ export class AppSignin extends connect(store)(LitElement) {
 		return this.shadowRoot!.getElementById('signin-form');
 	}
 
-	public signIn() {
+	public signIn(e) {
+		e.preventDefault();
 		store.dispatch(submitSignin(Object.assign(this.signInForm,
 			{
 			  email: this.emailInput.value,

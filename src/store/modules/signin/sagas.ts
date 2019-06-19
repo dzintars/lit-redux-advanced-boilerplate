@@ -7,7 +7,6 @@ function* handleSigninSubmit(action) {
 	try {
 		// console.log("Payload", action)
 		const signin = yield call(fetchSignin, action);
-		console.log("Response:", signin)
 		yield put(setSignin(signin));
 	} catch (error) {
 		yield put(setSigninError(error.toString()));

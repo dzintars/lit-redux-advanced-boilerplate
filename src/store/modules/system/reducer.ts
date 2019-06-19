@@ -117,6 +117,7 @@ const initialState: SystemState = {
 			application: '3096aa1f-a6ce-4130-8147-66f4bea35e16',
 		},
 	},
+	wsConnected: false,
 };
 
 export default <Reducer>(state: SystemState = initialState, action: SystemActionTypes) => {
