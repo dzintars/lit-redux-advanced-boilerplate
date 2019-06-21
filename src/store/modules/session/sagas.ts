@@ -35,3 +35,5 @@ function* watchSignoutSubmit() {
 // TODO: Fix Saga composition and exports
 
 export { watchSigninSubmit, watchSignoutSubmit };
+
+// Test git username
