@@ -1,11 +1,11 @@
 import { customElement, property } from 'lit-element';
 import GlobalStyle from '../../assets/global-style';
-import { AppShell } from '../../containers/app-shell';
+import { SystemShell } from '../../containers/system-shell';
 import Style from './style';
 import template from './template';
 
 @customElement('app-shipping')
-export class AppShipping extends AppShell {
+export class AppShipping extends SystemShell {
 	public static styles = [GlobalStyle, Style];
 	private socket = new WebSocket("ws://localhost:7070/v1/ws/private");
 

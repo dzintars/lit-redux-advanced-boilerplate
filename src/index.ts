@@ -1,6 +1,6 @@
 import { Router } from '@vaadin/router';
 import './scss/main.scss';
-import './containers/app-shell'
+import './containers/system-shell'
 import '../src/containers/socket-example-page';
 import './routes/app-home';
 import './routes/app-signup';
@@ -18,7 +18,7 @@ function initRouter() {
     router.setRoutes([
         {
             path: '/',
-            component: 'app-shell',
+            component: 'system-shell',
             // animate: true,
             children: [
                 { path: '/', component: 'app-home' },

@@ -6,8 +6,8 @@ import Style from './style';
 
 import '../../views/main-taskbar';
 
-@customElement('app-shell')
-export class AppShell extends connect(store)(LitElement) {
+@customElement('system-shell')
+export class SystemShell extends connect(store)(LitElement) {
 	public static styles = [ GlobalStyle, Style ];
 
 	@property({ type: String}) lastUsedApp = 'app-home'
@@ -47,6 +47,6 @@ export class AppShell extends connect(store)(LitElement) {
 
 declare global {
 	interface HTMLElementTagNameMap {
-	  'app-shell': AppShell;
+	  'system-shell': SystemShell;
 	}
 }

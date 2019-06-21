@@ -1,10 +1,10 @@
 import { customElement, html, css } from 'lit-element';
-import { AppShell } from '../../containers/app-shell';
+import { SystemShell } from '../../containers/system-shell';
 import GlobalStyle from '../../assets/global-style';
 import Style from './style';
 
 @customElement('app-not-found')
-class AppNotFound extends AppShell {
+class AppNotFound extends SystemShell {
 	public static styles = [GlobalStyle, Style];
 
 	protected render() {

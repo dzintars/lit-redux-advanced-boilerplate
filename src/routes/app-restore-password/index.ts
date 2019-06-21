@@ -1,11 +1,11 @@
 import { customElement, html } from 'lit-element';
-import { AppShell } from '../../containers/app-shell';
+import { SystemShell } from '../../containers/system-shell';
 import GlobalStyle from '../../assets/global-style';
 import Style from './style';
 import '../../views/legal-info';
 
 @customElement('app-restore-password')
-export class AppRestorePassword extends AppShell {
+export class AppRestorePassword extends SystemShell {
 	public static styles = [ GlobalStyle, Style ];
 
 	protected render() {

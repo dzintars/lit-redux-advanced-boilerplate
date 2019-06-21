@@ -1,10 +1,10 @@
 import { customElement, html, css } from 'lit-element';
-import { AppShell } from '../../containers/app-shell';
+import { SystemShell } from '../../containers/system-shell';
 import GlobalStyle from '../../assets/global-style';
 import Style from './style';
 
 @customElement('app-home')
-export class AppHome extends AppShell {
+export class AppHome extends SystemShell {
 	public static styles = [GlobalStyle, Style];
 
 	// eslint-disable-next-line

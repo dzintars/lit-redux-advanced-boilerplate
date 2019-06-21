@@ -1,5 +1,5 @@
 import './scss/main.scss';
-import './containers/app-shell';
+import './containers/system-shell';
 import './containers/socket-example-page';
 import './routes/app-home';
 import './routes/app-signup';

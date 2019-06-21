@@ -6,5 +6,7 @@ export default function template(this: MainNavigationPublic) {
 		<button>Marketplace</button>
 		<button>Services</button>
 		<button>Organizations</button>
+		<button>Applications</button>
+		<button>About</button>
 	`;
 }
