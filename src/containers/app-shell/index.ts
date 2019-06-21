@@ -1,36 +1,31 @@
-import { LitElement, customElement, html, css, property } from 'lit-element';
+import { LitElement, customElement, html, property } from 'lit-element';
 import { connect } from 'pwa-helpers';
 import store, { getLauncherVisibility, getSession } from '../../store';
-import { Router } from '@vaadin/router';
-import '../main-navigation';
-import '../main-launcher';
-import '../app-signin';
+import GlobalStyle from '../../assets/global-style';
+import Style from './style';
+
+import '../../components/main-navigation';
+import '../../components/main-launcher';
+// import '../../components/app-signin';
 
 @customElement('app-shell')
 export class AppShell extends connect(store)(LitElement) {
+	public static styles = [ GlobalStyle, Style ];
 
 	@property({ type: Object }) session = {
 		live: false,
 		email: '',
 	};
 
-	private text: string;
 	private launcherIsVisible: boolean;
 	private lastUsedApp: string;
-	private defaultApp: string;
 
 	static get properties() {
 		return {
-			text: {
-				type: String,
-			},
 			launcherIsVisible: {
 				type: Boolean,
 			},
 			lastUsedApp: {
-				type: String,
-			},
-			defaultApp: {
 				type: String,
 			},
 		};
@@ -38,8 +33,6 @@ export class AppShell extends connect(store)(LitElement) {
 
 	constructor() {
 		super();
-		this.text = 'App Shell Component';
-		this.defaultApp = 'app-signin';
 		this.lastUsedApp = 'app-home';
 		// this.launcherIsVisible = true
 	}
@@ -52,30 +45,10 @@ export class AppShell extends connect(store)(LitElement) {
 		// }
 	}
 
-	static get styles() {
-		return [
-			css`
-				:host {
-					height: 100vh;
-					width: 100vw;
-					box-sizing: border-box;
-					display: flex;
-					flex-direction: column;
-					background-color: var(--color-base-light);
-					color: var(--color-dodgerblue-10d);
-				}
-				main-launcher {
-					position: fixed;
-					top: var(--size-sl);
-				}
-			`,
-		];
-	}
 
-	render() {
+	protected render() {
 		return html`
 			<main-navigation></main-navigation>
-
 			${this.launcherIsVisible
 				? html`
 						<main-launcher></main-launcher>
@@ -102,4 +75,10 @@ export class AppShell extends connect(store)(LitElement) {
 	// createRenderRoot() {
 	// 	return this;
 	// }
+}
+
+declare global {
+	interface HTMLElementTagNameMap {
+	  'app-shell': AppShell;
+	}
 }

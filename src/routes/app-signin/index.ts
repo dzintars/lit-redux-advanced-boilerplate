@@ -1,13 +1,14 @@
-import { LitElement, customElement, property, query } from 'lit-element';
+import { customElement, property, query } from 'lit-element';
 import { connect } from 'pwa-helpers';
 import store, { submitSignin } from '../../store';
+import { AppShell } from '../../containers/app-shell';
 import GlobalStyle from '../../assets/global-style';
 import Style from './style';
 import { SignIn } from './models'
 import template from './template';
 
 @customElement('app-signin')
-export class AppSignin extends connect(store)(LitElement) {
+export class AppSignin extends connect(store)(AppShell) {
 	public static styles = [GlobalStyle, Style];
 
 	@property({type: SignIn})

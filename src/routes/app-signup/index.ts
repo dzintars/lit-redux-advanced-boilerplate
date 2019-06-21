@@ -1,11 +1,12 @@
 import { LitElement, html, property } from 'lit-element';
 import { connect } from 'pwa-helpers';
 import store, { loadWaybills, getWaybills, submitSignup } from '../../store';
+import { AppShell } from '../../containers/app-shell';
 import GlobalStyle from '../../assets/global-style';
 import Style from './style';
-import '../legal-info';
+import '../../components/legal-info';
 
-class AppSignup extends connect(store)(LitElement) {
+class AppSignup extends connect(store)(AppShell) {
 	static get is() {
 		return 'app-signup';
 	}
@@ -20,7 +21,7 @@ class AppSignup extends connect(store)(LitElement) {
 	}
 
 	// eslint-disable-next-line
-	render() {
+	protected render() {
 		return html`
 			<div>
 				<div class="container">
@@ -37,7 +38,7 @@ class AppSignup extends connect(store)(LitElement) {
 						</div>
 						<div class="fieldset">
 							<label for="password">Password</label>
-							<input id="password" autocomplete="off" name="password" type="password" />
+							<input id="password" name="password" type="password" />
 						</div>
 						<div class="fieldset">
 							<input

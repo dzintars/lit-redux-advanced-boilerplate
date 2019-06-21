@@ -1,10 +1,12 @@
-import { LitElement,html, customElement } from 'lit-element';
+import { html, customElement } from 'lit-element';
 import GlobalStyle from '../../assets/global-style';
+import { AppShell } from '../../containers/app-shell';
 import Style from './style';
 import template from './template';
 
 @customElement('app-shipping')
-export class AppShipping extends LitElement {
+export class AppShipping extends AppShell {
+	public static styles = [GlobalStyle, Style];
 	private socket = new WebSocket("ws://localhost:7070/v1/ws/private");
 	
 	public sendMessage(m: string) {
@@ -13,14 +15,8 @@ export class AppShipping extends LitElement {
 		this.socket.send(m);
 	}
 	
-	public static styles = [GlobalStyle, Style];
-	public render() {
-		return 	html`
-		<div>
-			<h1>Shipping</h1>
-			<button @click=${() => this.sendMessage('Message')}>Send WS</button>
-		</div>
-	`;
+	protected render() {
+		return template.call(this);
 	}
 
 

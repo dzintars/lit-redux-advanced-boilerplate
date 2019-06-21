@@ -1,6 +1,6 @@
 import { html } from 'lit-element';
 import { AppSignin } from './index';
-import '../legal-info';
+import '../../components/legal-info';
 
 export default function template(this: AppSignin) {
 	return html`
