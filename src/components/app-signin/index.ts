@@ -1,9 +1,8 @@
 import { LitElement, customElement, property, query } from 'lit-element';
 import { connect } from 'pwa-helpers';
-import store, { submitSignin, getSigninState } from '../../store';
+import store, { submitSignin } from '../../store';
 import GlobalStyle from '../../assets/global-style';
 import Style from './style';
-import { Router } from '@vaadin/router';
 import { SignIn } from './models'
 import template from './template';
 
@@ -11,24 +10,11 @@ import template from './template';
 export class AppSignin extends connect(store)(LitElement) {
 	public static styles = [GlobalStyle, Style];
 
-	@property({ type: Object }) user = {
-		isSignedin: false,
-		email: '',
-	};
-
 	@property({type: SignIn})
 	public signInForm = {
 		email: '',
 		password: '',
 	};
-
-	// TODO: Remove this test thing
-	stateChanged(state) {
-		this.user = getSigninState(state);
-		if (this.user.isSignedin === true) {
-			Router.go(`/shipping`);
-		}
-	}
 
 	protected render() {
 		return template.call(this);

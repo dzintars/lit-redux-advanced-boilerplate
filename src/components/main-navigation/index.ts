@@ -1,22 +1,23 @@
-import { LitElement, html, customElement } from 'lit-element';
+import { LitElement, html, customElement, property } from 'lit-element';
 import { connect } from 'pwa-helpers';
-import store, { toggleLauncher, hideLauncher } from '../../store';
+import store, { toggleLauncher, hideLauncher, getSession, submitSignout } from '../../store';
 import { Grid } from '../../assets/svg';
 import { Router } from '@vaadin/router';
 import GlobalStyle from '../../assets/global-style';
 import Style from './style';
 
-// let defferedPrompt;
-
-// window.addEventListener('beforeinstallprompt', (e) => {
-// 	e.preventDefault();
-// 	console.log('beforeinstallprompt was called');
-// 	defferedPrompt = e;
-// });
-
 @customElement('main-navigation')
 export class MainNavigation extends connect(store)(LitElement) {
 	public static styles = [GlobalStyle, Style];
+
+	@property({ type: Object }) session = {
+		live: false,
+	};
+
+	stateChanged(state) {
+		this.session = getSession(state);
+		console.log(this.session)
+	}
 
 	render() {
 		return html`
@@ -25,21 +26,16 @@ export class MainNavigation extends connect(store)(LitElement) {
 			</button>
 			<h1 @click=${() => this.switchRoute('')}>Oswee</h1>
 			<div></div>
-			<button id="btnSignin" @click=${() => this.switchRoute('signin')}>Sign In</button>
-			`;
-		}
+			${ this.session.live ?
+            	html`
+					<button @click=${() => this.signOut()}>Sign Out</button>
+			  	` : html`
+              		<button id="btnSignin" @click=${() => this.switchRoute('signin')}>Sign In</button>
+				`
+            }
+		`;
+	}
 		
-		// <button @click=${() => this.promptInstall(event)} class="install">Install</button>
-	// promptInstall(e) {
-	// 	defferedPrompt.prompt();
-	// 	defferedPrompt.userChoice.then((choiceResult) => {
-	// 		if (choiceResult.outcome === 'accepted') {
-	// 			console.log('User accepted Installation')
-	// 		}
-	// 		defferedPrompt = null;
-	// 	});
-	// }
-
 	toggleLauncher() {
 		store.dispatch(toggleLauncher());
 	}
@@ -48,6 +44,11 @@ export class MainNavigation extends connect(store)(LitElement) {
 		// console.log(Router.urlForName('/signin'));
 		store.dispatch(hideLauncher());
 		Router.go(`/${route}`);
+	}
+
+	public signOut() {
+		console.log("Sign out clicked!")
+		store.dispatch(submitSignout());
 	}
 
 	// Turn off shadowDOM

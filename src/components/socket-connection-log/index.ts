@@ -2,11 +2,12 @@ import { LitElement, customElement, property } from 'lit-element';
 import { connect } from 'pwa-helpers';
 import store, { socketsConnect, socketsDisconnect } from '../../store';
 import GlobalStyle from '../../assets/global-style';
+import Style from './style';
 import template from './template';
 
 @customElement('socket-connection-log')
 export class SocketConnectionLog extends connect(store)(LitElement) {
-	public static styles = [GlobalStyle];
+	public static styles = [GlobalStyle, Style];
 
 	@property({ type: Boolean })
     public loaded = false;

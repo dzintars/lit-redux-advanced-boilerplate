@@ -1,6 +1,6 @@
 import { LitElement, customElement, property, query } from 'lit-element';
 import { connect } from 'pwa-helpers';
-import store, { RootState, socketsMessageSending, socketsMessageReceiving } from '../../store';
+import store, { RootState, socketsMessageSend, socketsMessageReceiving } from '../../store';
 import GlobalStyle from '../../assets/global-style';
 import template from './template';
 
@@ -37,7 +37,8 @@ export class SocketMessageLog extends connect(store)(LitElement) {
 
 	public handleSendButton(event) {
 		event.preventDefault();
-		store.dispatch(socketsMessageSending(this.messageInput.value))
+		const payload = {message: this.messageInput.value}
+		store.dispatch(socketsMessageSend(payload))
 		this.messageInput.value = '';
 	}
 

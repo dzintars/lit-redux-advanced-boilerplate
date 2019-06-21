@@ -1,3 +1,5 @@
+// https://habr.com/ru/post/318148/
+
 import store, { socketsConnecting, socketsDisconnecting, socketsDisconnect, socketsMessageReceiving, socketsMessageSending } from '../../store';
 import { SocketTypes } from '../modules/websocket/types';
 
@@ -29,7 +31,7 @@ export default function createWebSocketMiddleware() {
                 socketExample.close();
             }
             console.log('SOCKETS_CONNECTING');
-            socketExample = new WebSocket('wss://echo.websocket.org/');
+            socketExample = new WebSocket('ws://localhost:7072/v1/ws/private');
             store.dispatch(socketsConnecting());
             socketExample.onmessage = onMessage(socketExample, store);
             socketExample.onclose = onClose(store);
@@ -45,8 +47,9 @@ export default function createWebSocketMiddleware() {
             socketExample = null;
             break;
         case SocketTypes.SOCKETS_MESSAGE_SEND:
+            console.log('There')
                 socketExample.send(action.message_send);
-                store.dispatch(socketsMessageSending(action.message_send));
+                store.dispatch(socketsMessageSending(JSON.stringify(action.message_send)));
                 break;
         default:
           return next(action);

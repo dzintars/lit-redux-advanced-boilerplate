@@ -1,14 +1,18 @@
-import { LitElement, html, css } from 'lit-element';
+import { LitElement, customElement, html, css, property } from 'lit-element';
 import { connect } from 'pwa-helpers';
-import store, { getLauncherVisibility, initializeWeSocketsChannel } from '../../store';
+import store, { getLauncherVisibility, getSession } from '../../store';
+import { Router } from '@vaadin/router';
 import '../main-navigation';
 import '../main-launcher';
 import '../app-signin';
 
-class AppShell extends connect(store)(LitElement) {
-	static get is() {
-		return 'app-shell';
-	}
+@customElement('app-shell')
+export class AppShell extends connect(store)(LitElement) {
+
+	@property({ type: Object }) session = {
+		live: false,
+		email: '',
+	};
 
 	private text: string;
 	private launcherIsVisible: boolean;
@@ -42,7 +46,10 @@ class AppShell extends connect(store)(LitElement) {
 
 	stateChanged(state) {
 		this.launcherIsVisible = getLauncherVisibility(state);
-		// console.log(this.launcherIsVisible)
+		this.session = getSession(state);
+		// if (this.session.live === true) {
+		// 	Router.go(`/shipping`);
+		// }
 	}
 
 	static get styles() {
@@ -96,5 +103,3 @@ class AppShell extends connect(store)(LitElement) {
 	// 	return this;
 	// }
 }
-
-customElements.define(AppShell.is, AppShell);
