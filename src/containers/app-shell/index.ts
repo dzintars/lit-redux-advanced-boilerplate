@@ -1,12 +1,11 @@
 import { LitElement, customElement, html, property } from 'lit-element';
 import { connect } from 'pwa-helpers';
-import store, { getLauncherVisibility, getSession } from '../../store';
+import store, { getSession } from '../../store';
 import GlobalStyle from '../../assets/global-style';
 import Style from './style';
 
 import '../../views/main-navigation';
 import '../../views/main-launcher';
-// import '../../components/app-signin';
 
 @customElement('app-shell')
 export class AppShell extends connect(store)(LitElement) {
@@ -17,14 +16,10 @@ export class AppShell extends connect(store)(LitElement) {
 		email: '',
 	};
 
-	private launcherIsVisible: boolean;
 	private lastUsedApp: string;
 
 	static get properties() {
 		return {
-			launcherIsVisible: {
-				type: Boolean,
-			},
 			lastUsedApp: {
 				type: String,
 			},
@@ -34,11 +29,9 @@ export class AppShell extends connect(store)(LitElement) {
 	constructor() {
 		super();
 		this.lastUsedApp = 'app-home';
-		// this.launcherIsVisible = true
 	}
 
 	stateChanged(state) {
-		this.launcherIsVisible = getLauncherVisibility(state);
 		this.session = getSession(state);
 		// if (this.session.live === true) {
 		// 	Router.go(`/shipping`);
@@ -49,11 +42,6 @@ export class AppShell extends connect(store)(LitElement) {
 	protected render() {
 		return html`
 			<main-navigation></main-navigation>
-			${this.launcherIsVisible
-				? html`
-						<main-launcher></main-launcher>
-				  `
-				: ''}
 			<slot></slot>
 		`;
 	}
@@ -70,11 +58,6 @@ export class AppShell extends connect(store)(LitElement) {
 	disconnectedCallback() {
 		super.disconnectedCallback();
 	}
-
-	// Turn off shadowDOM
-	// createRenderRoot() {
-	// 	return this;
-	// }
 }
 
 declare global {

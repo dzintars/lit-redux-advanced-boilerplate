@@ -10,9 +10,4 @@ export default css`
         display: flex;
         flex-direction: column;
     }
-    main-launcher {
-        position: fixed;
-        top: var(--size-sl);
-    }
-
 `;

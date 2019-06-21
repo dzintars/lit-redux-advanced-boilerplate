@@ -5,9 +5,14 @@ export default css`
 		box-sizing: border-box;
 	}
 	:host {
+		/* width: 100%; */
+		box-sizing: border-box;
+		display: flex;
+		flex-direction: column;
+	}
+	nav {
 		min-height: var(--size-sl);
 		width: 100%;
-		box-sizing: border-box;
 		display: flex;
 		flex-direction: row;
 		background-color: var(--color-dodgerblue-10d);
@@ -57,4 +62,8 @@ export default css`
 		font-weight: 500;
 		color: white;
 	}
+	main-launcher {
+        position: fixed;
+        top: var(--size-sl);
+    }
 `;
