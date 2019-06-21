@@ -8,8 +8,9 @@ import store, {
 	launcherShown,
 	launcherHidden,
 } from '../../store';
-import '../app-shortcut';
 import { Router } from '@vaadin/router';
+import {EventPathIncludes } from '../../utils';
+import '../app-shortcut';
 
 class MainLauncher extends connect(store)(LitElement) {
 	static is = 'main-launcher';
@@ -82,7 +83,7 @@ class MainLauncher extends connect(store)(LitElement) {
 				`,
 			)}
 		`;
-	}
+	}//
 
 	switchRoute(route) {
 		store.dispatch(hideLauncher());
@@ -116,44 +117,11 @@ class MainLauncher extends connect(store)(LitElement) {
 	handleClickOutside(e) {
 		if (
 			this.getRootNode().contains(this) &&
-			(!e.composedPath().includes(this) && !this.eventPathIncludes(e, '#launcher'))
+			(!e.composedPath().includes(this) && !EventPathIncludes(e, '#launcher'))
 		) {
 			store.dispatch(hideLauncher());
 		}
 	}
-
-	// https://github.com/codebryo/event-path-includes/blob/master/dist/index.js
-
-	// eslint-disable-next-line
-	parseSelector(selector) {
-		const logic = {
-			isClass: selector.startsWith('.'),
-			isId: selector.startsWith('#'),
-		};
-
-		const key = logic.isClass ? 'className' : logic.isId ? 'id' : '';
-
-		return {
-			key,
-			val: selector.substr(1),
-		};
-	}
-
-	eventPathIncludes(event, selector) {
-		// https://stackoverflow.com/questions/39245488/event-path-undefined-with-firefox-and-vue-js
-		if (!event || !(event.path || (event.composedPath && event.composedPath()))) return false;
-
-		const selectorDetails = this.parseSelector(selector);
-		return (event.path || (event.composedPath && event.composedPath())).some(el => {
-			if (!el[selectorDetails.key]) return false;
-			return el[selectorDetails.key].includes(selectorDetails.val);
-		});
-	}
-
-	// Turn off shadowDOM
-	// createRenderRoot() {
-	// 	return this;
-	// }
 }
 
 customElements.define(MainLauncher.is, MainLauncher);

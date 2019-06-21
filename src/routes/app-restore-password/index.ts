@@ -2,7 +2,7 @@ import { customElement, html } from 'lit-element';
 import { AppShell } from '../../containers/app-shell';
 import GlobalStyle from '../../assets/global-style';
 import Style from './style';
-import '../../components/legal-info';
+import '../../views/legal-info';
 
 @customElement('app-restore-password')
 export class AppRestorePassword extends AppShell {

@@ -4,7 +4,7 @@ import store, { loadWaybills, getWaybills, submitSignup } from '../../store';
 import { AppShell } from '../../containers/app-shell';
 import GlobalStyle from '../../assets/global-style';
 import Style from './style';
-import '../../components/legal-info';
+import '../../views/legal-info';
 
 class AppSignup extends connect(store)(AppShell) {
 	static get is() {

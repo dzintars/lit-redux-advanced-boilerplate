@@ -4,8 +4,8 @@ import store, { getLauncherVisibility, getSession } from '../../store';
 import GlobalStyle from '../../assets/global-style';
 import Style from './style';
 
-import '../../components/main-navigation';
-import '../../components/main-launcher';
+import '../../views/main-navigation';
+import '../../views/main-launcher';
 // import '../../components/app-signin';
 
 @customElement('app-shell')

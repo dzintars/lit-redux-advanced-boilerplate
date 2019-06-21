@@ -16,3 +16,9 @@ export class AppHome extends AppShell {
 		`;
 	}
 }
+
+declare global {
+	interface HTMLElementTagNameMap {
+	  'app-home': AppHome;
+	}
+}

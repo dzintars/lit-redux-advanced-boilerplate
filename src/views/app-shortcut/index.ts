@@ -1,9 +1,7 @@
-import { LitElement, html, css, property } from 'lit-element';
+import { LitElement, customElement, html, css, property } from 'lit-element';
 
-class AppShortcut extends LitElement {
-	static get is() {
-		return 'app-shortcut';
-	}
+@customElement('app-shortcut')
+export class AppShortcut extends LitElement {
 
 	@property({ type: String }) public title: string = '';
 
@@ -25,8 +23,6 @@ class AppShortcut extends LitElement {
 		];
 	}
 
-	//
-	// eslint-disable-next-line
 	render() {
 		return html`
 			<h3>${this.title}</h3>
@@ -36,11 +32,10 @@ class AppShortcut extends LitElement {
 	connectedCallback() {
 		super.connectedCallback();
 	}
-
-	// Turn off shadowDOM
-	// createRenderRoot() {
-	// 	return this;
-	// }
 }
 
-customElements.define(AppShortcut.is, AppShortcut);
+declare global {
+	interface HTMLElementTagNameMap {
+	  'app-shortcut': AppShortcut;
+	}
+}

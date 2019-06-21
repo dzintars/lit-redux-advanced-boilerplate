@@ -1,7 +1,7 @@
 import { html } from 'lit-element';
 import { SocketExamplePage } from './index';
-import '../../components/socket-connection-log';
-import '../../components/socket-message-log';
+import '../../views/socket-connection-log';
+import '../../views/socket-message-log';
 
 export default function template(this: SocketExamplePage) {
 	return html`

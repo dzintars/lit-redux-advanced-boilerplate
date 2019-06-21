@@ -9,8 +9,6 @@ export default css`
         width: 100vw;
         display: flex;
         flex-direction: column;
-        background-color: var(--color-base-light);
-        color: var(--color-dodgerblue-10d);
     }
     main-launcher {
         position: fixed;

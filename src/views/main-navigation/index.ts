@@ -16,7 +16,6 @@ export class MainNavigation extends connect(store)(LitElement) {
 
 	stateChanged(state) {
 		this.session = getSession(state);
-		console.log(this.session)
 	}
 
 	render() {
@@ -50,9 +49,4 @@ export class MainNavigation extends connect(store)(LitElement) {
 		console.log("Sign out clicked!")
 		store.dispatch(submitSignout());
 	}
-
-	// Turn off shadowDOM
-	// createRenderRoot() {
-	// 	return this;
-	// }
 }

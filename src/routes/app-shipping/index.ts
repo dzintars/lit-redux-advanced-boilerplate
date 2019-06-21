@@ -43,3 +43,9 @@ export class AppShipping extends AppShell {
 		this.socket.close(1000, "Work complete");
 	}
 }
+
+declare global {
+	interface HTMLElementTagNameMap {
+	  'app-shipping': AppShipping;
+	}
+}
