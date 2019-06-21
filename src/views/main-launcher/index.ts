@@ -1,7 +1,8 @@
-import { LitElement, html, css } from 'lit-element';
+import { LitElement, customElement, html, css } from 'lit-element';
 import { repeat } from 'lit-html/directives/repeat';
 import { connect } from 'pwa-helpers';
 import store, {
+	RootState,
 	getPublicApps,
 	getLauncherVisibility,
 	hideLauncher,
@@ -12,8 +13,8 @@ import { Router } from '@vaadin/router';
 import {EventPathIncludes } from '../../utils';
 import '../app-shortcut';
 
-class MainLauncher extends connect(store)(LitElement) {
-	static is = 'main-launcher';
+@customElement('main-launcher')
+export class MainLauncher extends connect(store)(LitElement) {
 
 	private isVisible: boolean;
 	private wrapperRef: any;
@@ -37,7 +38,7 @@ class MainLauncher extends connect(store)(LitElement) {
 		this.handleClickOutside = this.handleClickOutside.bind(this);
 	}
 
-	stateChanged(state) {
+	stateChanged(state: RootState) {
 		this.isVisible = getLauncherVisibility(state);
 		this.apps = getPublicApps(state);
 	}
@@ -124,4 +125,8 @@ class MainLauncher extends connect(store)(LitElement) {
 	}
 }
 
-customElements.define(MainLauncher.is, MainLauncher);
+declare global {
+	interface HTMLElementTagNameMap {
+	  'main-launcher': MainLauncher;
+	}
+}

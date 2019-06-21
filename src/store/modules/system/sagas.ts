@@ -24,7 +24,6 @@ function* initializeWebSocketsChannel() {
 }
 
 function* mySaga() {
-  console.log("mySaga")
   yield takeEvery(SystemTypes.INITIALIZE_WEB_SOCKETS_CHANNEL, initializeWebSocketsChannel);
 }
 

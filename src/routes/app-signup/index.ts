@@ -44,10 +44,10 @@ class AppSignup extends connect(store)(AppShell) {
 							<input
 								id="continue"
 								type="submit"
-								value="Create your Hooli account"
+								value="Create your Oswee account"
 								@click=${this.fetchOrders}
 							/>
-							<p>By creating an account, you agree to Hooli's</p>
+							<p>By creating an account, you agree to Oswee's</p>
 							<p>
 								<a href="/help/conditions_of_use">Conditions of Use</a> and
 								<a href="/help/privacy_notice">Privacy Notice</a>

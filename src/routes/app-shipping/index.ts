@@ -1,4 +1,4 @@
-import { html, customElement } from 'lit-element';
+import { customElement, property } from 'lit-element';
 import GlobalStyle from '../../assets/global-style';
 import { AppShell } from '../../containers/app-shell';
 import Style from './style';
@@ -8,7 +8,7 @@ import template from './template';
 export class AppShipping extends AppShell {
 	public static styles = [GlobalStyle, Style];
 	private socket = new WebSocket("ws://localhost:7070/v1/ws/private");
-	
+
 	public sendMessage(m: string) {
 		const socket = this.socket;
 		console.log(m);
