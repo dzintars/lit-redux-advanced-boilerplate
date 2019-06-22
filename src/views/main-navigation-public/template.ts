@@ -3,10 +3,10 @@ import { MainNavigationPublic } from './index';
 
 export default function template(this: MainNavigationPublic) {
 	return html`
-		<button>Marketplace</button>
-		<button>Services</button>
-		<button>Organizations</button>
-		<button>Applications</button>
-		<button>About</button>
+		<a href="/marketplace">Marketplace</a>
+		<a href="/services">Services</a>
+		<a href="/organizations">Organizations</a>
+		<a href="/applications">Applications</a>
+		<a href="/about">About</a>
 	`;
 }

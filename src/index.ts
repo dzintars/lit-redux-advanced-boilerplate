@@ -1,11 +1,13 @@
 import { Router } from '@vaadin/router';
 import './scss/main.scss';
-import './containers/system-shell'
+import './containers/system-shell';
 import '../src/containers/socket-example-page';
 import './routes/app-home';
 import './routes/app-signup';
 import './routes/app-signin';
 import './routes/app-restore-password';
+import './routes/app-marketplace';
+import './routes/app-services';
 import './routes/app-shipping';
 import './routes/app-not-found';
 
@@ -22,6 +24,8 @@ function initRouter() {
             // animate: true,
             children: [
                 { path: '/', component: 'app-home' },
+                { path: '/marketplace', component: 'app-marketplace' },
+                { path: '/services', component: 'app-services' },
                 {
                     path: '/signin',
                     component: 'app-signin',
