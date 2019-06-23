@@ -41,13 +41,6 @@ export default css`
 		color: white;
 		outline: none;
 	}
-	h1 {
-		margin: 0 1rem;
-		color: var(--color-dodgerblue-10l);
-		cursor: pointer;
-		font-weight: 700;
-		font-size: 2rem;
-	}
 	#btnSignin {
 		font-weight: 500;
 		color: white;

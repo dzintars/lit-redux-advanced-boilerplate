@@ -8,7 +8,6 @@ export default function template(this: MainNavigationPrivate) {
 		<button @click="${this.toggleLauncher}" id="launcher" class="launcher" title="Open Launcher">
 			${Grid()}
 		</button>
-		<h1 @click=${() => this.switchRoute('')}>Oswee</h1>
 		${this.launcherIsVisible
 				? html`
 					<main-launcher></main-launcher>

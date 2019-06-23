@@ -9,8 +9,9 @@ export default css`
 		flex-direction: row;
 		align-items: center;
 		justify-content: center;
-		border-bottom: 1px solid var(--color-dodgerblue-6d);
 		background-color: var(--color-dodgerblue-10d);
+		border-bottom: 1px solid var(--color-dodgerblue-6d);
+		box-shadow: 0 0 4px rgba(0, 11, 26, 0.32), 0 4px 8px rgba(0, 11, 26, 0.46); // barely visible
 	}
 
 	nav {

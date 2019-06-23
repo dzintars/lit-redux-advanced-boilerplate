@@ -1,8 +1,7 @@
 import { LitElement, customElement, property } from 'lit-element';
 import { connect } from 'pwa-helpers';
-import store, { RootState, hideLauncher, toggleLauncher, getLauncherVisibility} from '../../store';
+import store, { RootState, toggleLauncher, getLauncherVisibility} from '../../store';
 import GlobalStyle from '../../assets/global-style';
-import { Router } from '@vaadin/router';
 import template from './template';
 import Style from './style';
 
@@ -21,12 +20,6 @@ export class MainNavigationPrivate extends connect(store)(LitElement) {
 
 	toggleLauncher() {
 		store.dispatch(toggleLauncher());
-	}
-
-	switchRoute(route) {
-		// console.log(Router.urlForName('/signin'));
-		store.dispatch(hideLauncher());
-		Router.go(`/${route}`);
 	}
 }
 
